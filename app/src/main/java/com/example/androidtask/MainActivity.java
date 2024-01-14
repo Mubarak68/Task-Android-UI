@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     int totalscore = 0;
 
     @Override
-   comm protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
