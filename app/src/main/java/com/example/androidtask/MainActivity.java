@@ -1,6 +1,8 @@
 package com.example.androidtask;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,12 +10,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView questionTextView, correctTextView, wrongTextView, GradeTextView;
+    private TextView questionTextView, correctTextView, wrongTextView, GradeTextView, thanks;
     private Button trueButton, falseButton, nextButton;
     private ArrayList<String> questions;
     private ArrayList<Boolean> answers;
     private int currentIndex = 0;
     int totalscore = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
         wrongTextView = findViewById(R.id.WrongTextView);
         trueButton = findViewById(R.id.trueanswer);
         falseButton = findViewById(R.id.falseanswer);
-        nextButton = findViewById(R.id.nextQ);
+        nextButton = findViewById(R.id.nextQuestion);
         GradeTextView = findViewById(R.id.GradeTextView);
+        thanks = findViewById(R.id.Thanks);
 
 
         questions = new ArrayList<>();
@@ -71,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         nextButton.setVisibility(View.INVISIBLE);
         trueButton.setVisibility(View.VISIBLE);
         falseButton.setVisibility(View.VISIBLE);
+        thanks.setVisibility(View.INVISIBLE);
     }
 
     private void checkAnswer(boolean userAnswer) {
@@ -83,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
             trueButton.setVisibility(View.INVISIBLE);
             falseButton.setVisibility(View.INVISIBLE);
             nextButton.setVisibility(View.VISIBLE);
+            thanks.setVisibility(View.VISIBLE);
 
             TotalGrades();
         } else {
@@ -105,12 +111,12 @@ public class MainActivity extends AppCompatActivity {
         questionTextView.setText(questions.get(currentIndex));
 
         GradeTextView.setText(String.valueOf(totalscore));
-
         correctTextView.setVisibility(View.VISIBLE);
         wrongTextView.setVisibility(View.VISIBLE);
         nextButton.setVisibility(View.VISIBLE);
         trueButton.setVisibility(View.INVISIBLE);
         falseButton.setVisibility(View.INVISIBLE);
+
     }
 
     private void nextQuestion() {
